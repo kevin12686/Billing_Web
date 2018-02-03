@@ -1,21 +1,36 @@
 {% extends '_base.html' %}
+{% load fontawesome %}
 {% load bootstrap3 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=1 %}
-{% load fontawesome %}
 
 {% block content %}
+    {% fontawesome_stylesheet %}
     <table class="table table-striped">
         <thead>
         <th>記錄類型</th>
         <th>交易時間</th>
         <th>金額</th>
+        <th>操作</th>
         </thead>
         <tbody>
         {% for object in object_list %}
-            <td>{{ object.get_record_type_display }}</td>
-            <td>{{ object.transaction_time }}</td>
-            <td>{{ object.amount }}</td>
+            <tr>
+                <td>{{ object.get_record_type_display }}</td>
+                <td>{{ object.transaction_time }}</td>
+                <td>{{ object.amount }}</td>
+                <td>
+                    <a href="{% url 'record_detail' object.pk %}">
+                        <button type="button" class="btn btn-default">{% fontawesome_icon 'eye' %}</button>
+                    </a>
+                    <a href="{% url 'record_update' object.pk %}">
+                        <button type="button" class="btn btn-primary">{% fontawesome_icon 'edit' %}</button>
+                    </a>
+                    <a href="{% url 'record_detail' object.pk %}">
+                        <button type="button" class="btn btn-danger">{% fontawesome_icon 'trash-o' %}</button>
+                    </a>
+                </td>
+            </tr>
         {% endfor %}
         </tbody>
     </table>
