@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.admin.widgets import AdminSplitDateTime
+from django.contrib.admin.widgets import AdminDateWidget
 from . import models
 
 
@@ -8,5 +8,5 @@ class Record_Form(forms.ModelForm):
         model = models.Record
         fields = '__all__'
         widgets = {
-            'transaction_time': AdminSplitDateTime()
+            'transaction_date': AdminDateWidget()
         }

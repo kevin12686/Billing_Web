@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib import messages
-from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView
+from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView, FormView
 
 from . import models, froms
 
@@ -10,7 +10,7 @@ from . import models, froms
 
 class record_list(ListView):
     model = models.Record
-    ordering = 'transaction_time'
+    ordering = 'transaction_date'
     template_name = 'record_list.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -25,8 +25,7 @@ class record_detail(DetailView):
 
 
 class record_create(CreateView):
-    model = models.Record
-    fields = '__all__'
+    form_class = froms.Record_Form
     template_name = 'record_form.html'
 
     def get_success_url(self):
@@ -35,8 +34,7 @@ class record_create(CreateView):
 
 
 class record_update(UpdateView):
-    model = models.Record
-    fields = '__all__'
+    form_class = froms.Record_Form
     template_name = 'record_form.html'
 
     def get_success_url(self):
