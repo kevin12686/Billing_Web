@@ -6,5 +6,29 @@
 
 
 {% block content %}
-
+    {% fontawesome_stylesheet %}
+    <table class="table table-striped">
+        <thead>
+        <th>項目</th>
+        <th>資料</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="success">記錄類型</td>
+            <td>{{ object.get_record_type_display }}</td>
+        </tr>
+        <tr>
+            <td class="success">交易時間</td>
+            <td>{{ object.transaction_time }}</td>
+        </tr>
+        <tr>
+            <td class="success">金額</td>
+            <td>{{ object.amount }}</td>
+        </tr>
+        <tr>
+            <td class="success">手續費</td>
+            <td>{{ object.fee }}</td>
+        </tr>
+        </tbody>
+    </table>
 {% endblock %}

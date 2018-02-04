@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.views.i18n import js_catalog_template
 
 urlpatterns = [
     path('billing/', include('Billing.urls')),
     path('admin/', admin.site.urls),
+
 ]
