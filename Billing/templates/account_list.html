@@ -1,0 +1,45 @@
+{% extends '_base.html' %}
+{% load fontawesome %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+
+{% block content %}
+{% fontawesome_stylesheet %}
+<div class="row">
+    <div class="col-md-2 text-center">
+
+
+    </div>
+    <div class="col-md-10 text-center">
+        <table class="table table-hover table-condensed ">
+            <thead>
+            <th>帳戶名稱</th>
+            <th>初始金額</th>
+            <th>餘額</th>
+            <th>操作</th>
+            </thead>
+            <tbody>
+            {% for object in object_list %}
+            <tr>
+                <td>{{ object }}</td>
+                <td>{{ object.initial_amount }}</td>
+                <td>{{ object.balance }}</td>
+                <td>
+                    <a href="#">
+                        <button type="button" class="btn btn-default">{% fontawesome_icon 'eye' %}</button>
+                    </a>
+                    <a href="#">
+                        <button type="button" class="btn btn-primary">{% fontawesome_icon 'edit' %}</button>
+                    </a>
+                    <a href="#">
+                        <button type="button" class="btn btn-danger">{% fontawesome_icon 'trash-o' %}</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -14,6 +14,10 @@
         </thead>
         <tbody>
         <tr>
+            <td class="success">帳戶</td>
+            <td>{{ object.own_account }}</td>
+        </tr>
+        <tr>
             <td class="success">記錄類型</td>
             <td>{{ object.get_record_type_display }}</td>
         </tr>
@@ -26,8 +30,8 @@
             <td>{{ object.amount }}</td>
         </tr>
         <tr>
-            <td class="success">手續費</td>
-            <td>{{ object.fee }}</td>
+            <td class="success">備註</td>
+            <td>{{ object.description }}</td>
         </tr>
         </tbody>
     </table>

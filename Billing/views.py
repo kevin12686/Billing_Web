@@ -16,6 +16,9 @@ class record_list(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['record_form'] = froms.Record_Form()
+        context['total_expend'] = sum([each.amount for each in self.model.objects.filter(record_type=models.Record.EXPEND)])
+        context['total_income'] = sum([each.amount for each in self.model.objects.filter(record_type=models.Record.INCOME)])
+        context['balance'] = context['total_income'] - context['total_expend']
         return context
 
 
@@ -34,6 +37,7 @@ class record_create(CreateView):
 
 
 class record_update(UpdateView):
+    model = models.Record
     form_class = froms.Record_Form
     template_name = 'record_form.html'
 
@@ -49,3 +53,8 @@ class record_delete(DeleteView):
     def get_success_url(self):
         messages.success(self.request, '刪除成功')
         return reverse('record_list')
+
+
+class account_list(ListView):
+    model = models.Account
+    template_name = 'account_list.html'
