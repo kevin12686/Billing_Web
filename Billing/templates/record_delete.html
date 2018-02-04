@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+{% load fontawesome %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 text-center">
+            <form method="post">
+                {% csrf_token %}
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">確定要刪除?</h3>
+                    </div>
+                    <div class="panel-body">
+                        <button type="submit" class="btn btn-default">確定</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+    </div>
+{% endblock %}

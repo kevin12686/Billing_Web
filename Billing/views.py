@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib import messages
-from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView, FormView
+from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView
 
 from . import models, froms
 
@@ -39,4 +39,13 @@ class record_update(UpdateView):
 
     def get_success_url(self):
         messages.success(self.request, '更新成功')
+        return reverse('record_list')
+
+
+class record_delete(DeleteView):
+    model = models.Record
+    template_name = 'record_delete.html'
+
+    def get_success_url(self):
+        messages.success(self.request, '刪除成功')
         return reverse('record_list')
