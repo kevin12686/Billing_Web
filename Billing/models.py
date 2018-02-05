@@ -43,10 +43,5 @@ class Account(models.Model):
     balance = models.DecimalField(max_digits=11, decimal_places=2, null=False, default=0, verbose_name='餘額')
     description = models.TextField(blank=True, verbose_name='備註')
 
-    @classmethod
-    def create(cls, name, initial_amount, description):
-        account = cls(name=name, initial_amount=initial_amount, balance=initial_amount, description=description)
-        account.save()
-
     def __str__(self):
         return self.name

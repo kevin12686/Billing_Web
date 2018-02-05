@@ -10,3 +10,9 @@ class Record_Form(forms.ModelForm):
         widgets = {
             'transaction_date': AdminDateWidget()
         }
+
+
+class Account_Form(forms.ModelForm):
+    class Meta:
+        model = models.Account
+        exclude = ['balance']
